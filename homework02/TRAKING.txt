@@ -1,0 +1,22 @@
+Friday_21/02/2025
+
+We have decided that homework is done by each one. 
+Álvaro has selected: 
+-the class Course 
+-fuctions: ENROLL, LOOKUP COURSE, SHOW TEACHERS
+Moreover, Álvaro is goint to presente the homework and he is going to be the main coder.
+
+Fernando has selected: 
+-the class Teacher 
+-fuctions: SHOW COURSES, LOOKUP STUDENT, SHOW PROFIT
+
+Esteban has selected: 
+-the class Student 
+-fuctions: ASSIGN, SHOW STUDENTS, LOOKUP TEACHER
+-the menú
+
+
+This time, we are goint to create three branch:
+-Álvaro is going to work in main01
+-Fernando is going to work in main02
+-Esteban is going to work in main03
