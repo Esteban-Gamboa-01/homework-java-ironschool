@@ -17,6 +17,8 @@ public class Student {
         this.course=null;
     }
 
+
+
 //    Delete comment. This is for auto-generate the id.
 //    Student myStudent1 = new Student("Ernest","we","wedfv");
 //    Student myStudent2 = new Student("Erest","we34r","wsdedfv");
@@ -28,9 +30,9 @@ public class Student {
         return studentId;
     }
 
-//    public void setStudentId(String studentId) {
-//        this.studentId = studentId;
-//    }
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 
     public String getName() {
         return name;

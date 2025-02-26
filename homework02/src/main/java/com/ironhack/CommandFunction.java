@@ -24,7 +24,7 @@ public class CommandFunction {
 //        System.out.println("Total Profit: " + (totalMoneyCourses - totalSalaries));
         System.out.println("The profit is: "+ (totalMoneyCourses - totalSalaries));
     }
-    
+
 
     public void showCourses() {
         String result = "";

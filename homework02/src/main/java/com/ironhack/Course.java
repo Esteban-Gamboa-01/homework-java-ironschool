@@ -73,7 +73,7 @@ public class Course {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", moneyEarned=" + moneyEarned +
-                ", teacher=" + teacher.getName() +
+                ", teacher=" + teacher +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.ironhack;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,22 +12,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class CommandFunctionTest {
 
     private CommandFunction commandFunction;
-    private List<Course> courseList;
-    private List<Teacher> teacherList;
-    private List<Student> studentList;
+//    private List<Course> courseList;
+//    private List<Teacher> teacherList;
+//    private List<Student> studentList;
 
     @BeforeEach
     public void setUp() {
-        courseList = new ArrayList<>();
-        teacherList = new ArrayList<>();
-        studentList = new ArrayList<>();
+//        courseList = new ArrayList<>();
+//        teacherList = new ArrayList<>();
+//        studentList = new ArrayList<>();
 
         Student student1 = new Student("Diego", "Madrid", "diego@mail.com");
+        student1.setStudentId("S33");
         student1.setCourse(new Course("Math", 200));
         Student student2 = new Student("David", "Murcia", "dvd@mail.com");
         student2.setCourse(new Course("Programming", 300));
-        studentList.add(student1);
-        studentList.add(student2);
+        Main.studentList.add(student1);
+        Main.studentList.add(student2);
 
 //        Teacher teacher1 = new Teacher("Alice", 1400);
 //        Teacher teacher2 = new Teacher("Bob", 1300);
@@ -38,7 +40,15 @@ class CommandFunctionTest {
 //        courseList.add(javaCourse);
 //        courseList.add(pythonCourse);
 
-        commandFunction = new CommandFunction(courseList, studentList, teacherList);
+        commandFunction = new CommandFunction();
+
+    }
+
+    @AfterEach
+    public void tearDown(){
+        Main.courseList = new ArrayList<>();
+        Main.teacherList= new ArrayList<>();
+        Main.studentList = new ArrayList<>();
 
     }
 
@@ -51,10 +61,10 @@ class CommandFunctionTest {
         javaCourse.setTeacher(teacher1);
         Course pythonCourse = new Course("Python", 600);
         pythonCourse.setTeacher(teacher1);
-        courseList.add(javaCourse);
-        courseList.add(pythonCourse);
+        Main.courseList.add(javaCourse);
+        Main.courseList.add(pythonCourse);
 
-        String courses = commandFunction.showCourses();
+        String courses = commandFunction.showCoursesTest();
 
         assertTrue(courses.contains("Java"));
         assertTrue(courses.contains("Python"));
@@ -63,59 +73,63 @@ class CommandFunctionTest {
     // LOOK UP STUDENT Command Tests
     @Test
     void lookupStudent_Found() {
-        String student = commandFunction.lookupStudent("C-1");
-
+        String student = commandFunction.lookupStudentTest("S33");
+        System.out.println(Main.studentList);
         assertTrue(student.contains("Diego"));
     }
 
     @Test
     public void lookupStudent_notFound() {
-        String student = commandFunction.lookupStudent("C-5");
-
-        assertEquals("Not Found student with ID ( C-5 ).", student);
+        String student = commandFunction.lookupStudentTest("S5");
+        System.out.println(Main.studentList);
+        assertEquals("Not Found student with ID ( S5 ).", student);
     }
 
     // SHOW PROFIT Command Tests
     @Test
     void showProfit_noCoursesNoTeachers_zeroProfit() {
-        assertEquals(0, commandFunction.showProfit());
+
+        Main.courseList = new ArrayList<>();
+        Main.teacherList= new ArrayList<>();
+
+        assertEquals(0, commandFunction.showProfitTest());
     }
 
     @Test
     void showProfit_coursesEarnMoney_teachersHaveSalary_correctProfit() {
         Teacher teacher1 = new Teacher("Alice", 400);
         Teacher teacher2 = new Teacher("Bob", 200);
-        teacherList.add(teacher1);
-        teacherList.add(teacher2);
+        Main.teacherList.add(teacher1);
+        Main.teacherList.add(teacher2);
 
         Course javaCourse = new Course("Java", 500);
         javaCourse.setMoneyEarned(500);
         Course pythonCourse = new Course("Python", 600);
         pythonCourse.setMoneyEarned(300);
 
-        courseList.add(javaCourse);
-        courseList.add(pythonCourse);
+        Main.courseList.add(javaCourse);
+        Main.courseList.add(pythonCourse);
 
         // (500+300) - (400+200) = 200
-        assertEquals(200, commandFunction.showProfit());
+        assertEquals(200, commandFunction.showProfitTest());
     }
 
     @Test
     void showProfit_teachersEarnMoreThanCourses_negativeProfit() {
         Teacher teacher1 = new Teacher("Alice", 1400);
         Teacher teacher2 = new Teacher("Bob", 1200);
-        teacherList.add(teacher1);
-        teacherList.add(teacher2);
+        Main.teacherList.add(teacher1);
+        Main.teacherList.add(teacher2);
 
         Course javaCourse = new Course("Java", 500);
         javaCourse.setMoneyEarned(500);
         Course pythonCourse = new Course("Python", 600);
         pythonCourse.setMoneyEarned(300);
 
-        courseList.add(javaCourse);
-        courseList.add(pythonCourse);
+        Main.courseList.add(javaCourse);
+        Main.courseList.add(pythonCourse);
 
         // (500+300) - (1400+1200) = -1800
-        assertEquals(-1800, commandFunction.showProfit());
+        assertEquals(-1800, commandFunction.showProfitTest());
     }
 }
