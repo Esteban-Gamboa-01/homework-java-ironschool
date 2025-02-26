@@ -1,8 +1,10 @@
 package com.ironhack;
 
 public class Main {
+    public static int counterStudent = 1;
+
     public static void main(String[] args) {
-        int counterStudent = 1;
+
 
         //Menu
         InitialMenu initialMenu = new InitialMenu();

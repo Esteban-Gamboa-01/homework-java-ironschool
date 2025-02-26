@@ -10,9 +10,10 @@ public class InitialMenu {
     int numberTeacher;
     int numberCourse;
     int numberStudent;
-    List<Teacher> teacherList = new ArrayList<>();
-    List<Course> courseList = new ArrayList<>();
-    List<Student> studentList = new ArrayList<>();
+    public List<Teacher> teacherList = new ArrayList<>();
+    public List<Course> courseList = new ArrayList<>();
+    public List<Student> studentList = new ArrayList<>();
+
 
     public void startMenu(){
         System.out.println("What is the school name?");
@@ -103,14 +104,17 @@ public class InitialMenu {
             addressStudent = scanner.nextLine();
             emailStudent = scanner.next();
             scanner.nextLine();
-            System.out.println("Ok! Course " + counter + ": "+nameStudent+". Address: " + addressStudent +
-                   ". Email: " + emailStudent +".");
 
             auxiliarStudent = new Student(nameStudent, addressStudent,emailStudent);
-            studentList.add(auxiliarStudent);
+            //This line is for proving that email format is correct
+            auxiliarStudent.setEmail(emailStudent);
 
-            scanner.close();
+            System.out.println("Ok! Student " + counter + ": "+nameStudent+". Address: " + addressStudent +
+                   ". Email: " + emailStudent +".");
+
+            studentList.add(auxiliarStudent);
         }
+
     }
 
 

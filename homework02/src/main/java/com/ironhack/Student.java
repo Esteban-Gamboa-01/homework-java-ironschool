@@ -1,17 +1,28 @@
 package com.ironhack;
 
+import java.util.regex.Pattern;
+
 public class Student {
     private String studentId;
     private String name;
     private String address;
-    private String email;
+    private String email = "";
     private Course course;
 
     public Student(String name, String address, String email) {
+        this.studentId = "S" + Main.counterStudent++;
         this.name = name;
         this.address = address;
         this.email = email;
+        this.course=null;
     }
+
+//    Delete comment. This is for auto-generate the id.
+//    Student myStudent1 = new Student("Ernest","we","wedfv");
+//    Student myStudent2 = new Student("Erest","we34r","wsdedfv");
+//
+//        System.out.println(myStudent1.getStudentId());
+//        System.out.println(myStudent2.getStudentId());
 
     public String getStudentId() {
         return studentId;
@@ -41,8 +52,20 @@ public class Student {
         return email;
     }
 
+    // Set email with validation
     public void setEmail(String email) {
-        this.email = email;
+        if (isValidEmail(email)) {
+            this.email = email;
+        } else {
+            throw new IllegalArgumentException("Invalid email format. Please use a valid format like 'example@mail.com'.");
+        }
+    }
+
+    //Code Fernando
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
     }
 
     public Course getCourse() {
@@ -53,10 +76,12 @@ public class Student {
         this.course = course;
     }
 
-//    This is for auto-generate the id.
-//    Student myStudent1 = new Student("Ernest","we","wedfv");
-//    Student myStudent2 = new Student("Erest","we34r","wsdedfv");
-//
-//        System.out.println(myStudent1.getStudentId());
-//        System.out.println(myStudent2.getStudentId());
+    @Override
+    public String toString() {
+        return "The studentId " + studentId +
+                " with name " + name +
+                " lives at the address " + address +
+                ". The email contact is " + email +
+                ". Course=" + course;
+    }
 }

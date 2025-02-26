@@ -1,6 +1,10 @@
 package com.ironhack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CommandFunction {
+    //Change the empty method.
     public void showProfit() {
     }
 
@@ -8,7 +12,16 @@ public class CommandFunction {
     }
 
     public void showStudents() {
+        InitialMenu lista = new InitialMenu();
 
+        // If no courses in list
+        if (lista.studentList.isEmpty()) {
+            System.out.println( "There are no students at the school.");
+        } else {
+            for (Student student : lista.studentList) {
+                System.out.println(student.toString() + "\n");
+            }
+        }
     }
 
     public void showTeachers() {
