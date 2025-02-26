@@ -10,10 +10,6 @@ public class InitialMenu {
     int numberTeacher;
     int numberCourse;
     int numberStudent;
-    public List<Teacher> teacherList = new ArrayList<>();
-    public List<Course> courseList = new ArrayList<>();
-    public List<Student> studentList = new ArrayList<>();
-
 
     public void startMenu(){
         System.out.println("What is the school name?");
@@ -47,7 +43,7 @@ public class InitialMenu {
             System.out.println("Ok! Teacher " + counter + ": "+nameTeacher+". Salary: "+salaryTeacher);
 
             auxiliarTeacher = new Teacher(nameTeacher, salaryTeacher);
-            teacherList.add(auxiliarTeacher);
+            Main.teacherList.add(auxiliarTeacher);
         }
     }
 
@@ -76,7 +72,7 @@ public class InitialMenu {
             System.out.println("Ok! Course " + counter + ": "+nameCourse+". Price: "+priceCourse);
 
             auxiliarCourse = new Course(nameCourse, priceCourse);
-            courseList.add(auxiliarCourse);
+            Main.courseList.add(auxiliarCourse);
         }
     }
 
@@ -112,7 +108,7 @@ public class InitialMenu {
             System.out.println("Ok! Student " + counter + ": "+nameStudent+". Address: " + addressStudent +
                    ". Email: " + emailStudent +".");
 
-            studentList.add(auxiliarStudent);
+            Main.studentList.add(auxiliarStudent);
         }
 
     }
