@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    // For auto generated IDs
+    public static int courseId = 0;
+    public static int teacherId = 0;
     public static int counterStudent = 1;
     public static List<Teacher> teacherList = new ArrayList<>();
     public static List<Course> courseList = new ArrayList<>();
