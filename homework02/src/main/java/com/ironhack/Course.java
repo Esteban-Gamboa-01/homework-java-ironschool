@@ -9,9 +9,6 @@ public class Course {
     private double moneyEarned;
     private Teacher teacher;
 
-    public Course() {
-    }
-
     public Course(String name, double price) {
         this.courseId = generateCourseId();
         this.name = name;

@@ -26,6 +26,9 @@ public class Main {
         initialMenu.createStudent();
 
         serverMenu.showMenu();
-        serverMenu.selectCommand();
+        boolean res = true;
+        do{
+            res = serverMenu.selectCommand();
+        }while(res);
     }
 }
