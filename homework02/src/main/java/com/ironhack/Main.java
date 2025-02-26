@@ -10,8 +10,6 @@ public class Main {
     public static List<Student> studentList = new ArrayList<>();
 
     public static void main(String[] args) {
-
-
         //Menu
         InitialMenu initialMenu = new InitialMenu();
         ServerMenu serverMenu = new ServerMenu();

@@ -1,7 +1,5 @@
 package com.ironhack;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class InitialMenu {
@@ -103,7 +101,11 @@ public class InitialMenu {
 
             auxiliarStudent = new Student(nameStudent, addressStudent,emailStudent);
             //This line is for proving that email format is correct
-            auxiliarStudent.setEmail(emailStudent);
+            try{
+                auxiliarStudent.setEmail(emailStudent);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
 
             System.out.println("Ok! Student " + counter + ": "+nameStudent+". Address: " + addressStudent +
                    ". Email: " + emailStudent +".");
