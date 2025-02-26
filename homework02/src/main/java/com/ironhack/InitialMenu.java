@@ -116,7 +116,7 @@ public class InitialMenu {
     }
 
 
-
-
-
+    public void closeScanner() {
+        this.scanner.close();
+    }
 }

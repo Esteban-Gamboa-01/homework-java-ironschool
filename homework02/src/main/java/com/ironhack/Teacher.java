@@ -17,7 +17,7 @@ public class Teacher {
     private String autoTeacherId() {
 //        return "T-" + UUID.randomUUID().toString().substring(0, 3); // T-XXX
         Main.teacherId++;
-        return "C" + Main.teacherId;
+        return "T" + Main.teacherId;
     }
 
     public String getTeacherId() {

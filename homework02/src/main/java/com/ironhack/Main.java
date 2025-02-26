@@ -24,6 +24,7 @@ public class Main {
         initialMenu.createCourse();
         initialMenu.numberStudent();
         initialMenu.createStudent();
+        //initialMenu.closeScanner();
 
         serverMenu.showMenu();
         boolean res = true;

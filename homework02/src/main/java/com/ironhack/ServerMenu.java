@@ -31,6 +31,7 @@ public class ServerMenu {
         String cmd = scanner.nextLine();
         if(cmd.equals("EXIT")){
             option = false;
+            scanner.close();
         }else{
             try{
                 sanitize(cmd);
@@ -39,7 +40,7 @@ public class ServerMenu {
                 System.out.println(e.getMessage());
             }
         }
-        scanner.close();
+        //scanner.close();
         return option;
     }
 

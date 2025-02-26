@@ -28,7 +28,6 @@ public class CommandFunction {
         System.out.println("The profit is: "+ (totalMoneyCourses - totalSalaries));
     }
 
-
     public void showCourses() {
         String result = "";
         // If no courses in list
@@ -115,23 +114,24 @@ public class CommandFunction {
 
     public void lookupTeacher(String teacherId) {
         boolean isFound = false;
-
+        String result = "";
         if (Main.teacherList.isEmpty()) {
-            System.out.println("There are no students.");
+            System.out.println("There are no teachers.");
         } else {
             for (Teacher teacher : Main.teacherList) {
                 if (teacher.getTeacherId().equals(teacherId)) {
                     // Store found teacher info
-                    teacher.toString();
+                    result=teacher.toString();
                     isFound = true;
                     break;
                 }
             }
             // If not found
             if (!isFound) {
-                System.out.println("Not Found student with ID ( " + teacherId + " ).");
+                result="Not Found teacher with ID ( " + teacherId + " ).";
             }
         }
+        System.out.println(result);
     }
 
     public void enroll(String studentId, String courseId) {
@@ -165,6 +165,8 @@ public class CommandFunction {
                 System.out.println("Not Found course with ID ( " + courseId + " ).");
             }else{
                 Course c = Main.courseList.get(k);
+                c.setMoneyEarned(c.getMoneyEarned()+c.getPrice());
+                Main.courseList.set(k,c);
                 Student s = Main.studentList.get(j);
                 s.setCourse(c);
                 Main.studentList.set(j,s);
