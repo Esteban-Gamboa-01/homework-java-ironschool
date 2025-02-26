@@ -7,6 +7,10 @@ public class Main {
     public static int global_int = 0;
     public static int global_course_id = 0;
     public static int global_student_id = 0;
+    public static List<Teacher> teacherList = new ArrayList<>();
+    public static List<Student> studentList = new ArrayList<>();
+    public static List<Course> courseList = new ArrayList<>();
+
 
     public static void main(String[] args) {
         //Menu
@@ -24,9 +28,6 @@ public class Main {
         System.out.println(johny.getStudentId());
         System.out.println(janey.getStudentId());
 
-        List<Teacher> teacherList = new ArrayList<>();
-        List<Student> studentList = new ArrayList<>();
-        List<Course> courseList = new ArrayList<>();
         teacherList.add(john);
         teacherList.add(jane);
         studentList.add(johny);
@@ -34,12 +35,11 @@ public class Main {
         courseList.add(math);
         courseList.add(art);
 
-        School school = new School(teacherList,studentList,courseList);
 
-        CommandFunction command = new CommandFunction(school);
+        CommandFunction command = new CommandFunction();
         boolean res = true;
         do{
-            res = command.getUserCommand();
+            res = serverMenu.getUserCommand();
         }while(res);
     }
 }
