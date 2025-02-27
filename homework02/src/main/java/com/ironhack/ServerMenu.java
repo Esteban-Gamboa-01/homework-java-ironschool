@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ServerMenu {
+    Scanner scanner = new Scanner(System.in);
     public ServerMenu() {
     }
 
@@ -26,7 +27,7 @@ public class ServerMenu {
 
     public boolean selectCommand(){
         boolean option = true;
-        Scanner scanner = new Scanner(System.in);
+
         System.out.println("\nPlease introduce a command:");
         String cmd = scanner.nextLine();
         if(cmd.equals("EXIT")){
@@ -127,5 +128,9 @@ public class ServerMenu {
             }
         }
         return result;
+    }
+
+    public void closeScanner() {
+        this.scanner.close();
     }
 }

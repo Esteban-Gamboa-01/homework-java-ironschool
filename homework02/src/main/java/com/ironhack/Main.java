@@ -24,12 +24,15 @@ public class Main {
         initialMenu.createCourse();
         initialMenu.numberStudent();
         initialMenu.createStudent();
-        //initialMenu.closeScanner();
+
 
         serverMenu.showMenu();
         boolean res = true;
         do{
             res = serverMenu.selectCommand();
         }while(res);
+
+        serverMenu.closeScanner();
+
     }
 }
