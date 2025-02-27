@@ -22,7 +22,8 @@ public class ServerMenu {
                     "\n- LOOKUP STUDENT [STUDENT_ID]                      Example: LOOKUP STUDENT S5" +
                     "\n- SHOW TEACHERS" +
                     "\n- LOOKUP TEACHER [TEACHER_ID]                      Example: LOOKUP STUDENT T10" +
-                    "\n- SHOW PROFIT");
+                    "\n- SHOW PROFIT" +
+                    "\n- EXIT");
     }
 
     public boolean selectCommand(){
