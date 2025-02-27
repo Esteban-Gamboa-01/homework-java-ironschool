@@ -80,10 +80,21 @@ public class Student {
 
     @Override
     public String toString() {
-        return "The studentId " + studentId +
-                " with name " + name +
-                " lives at the address " + address +
-                ". The email contact is " + email +
-                ". Course=" + course;
+        String courseText;
+        try{
+            courseText = this.course.getName();
+        } catch (Exception e) {
+            courseText = "assignment pending";
+        }
+        return "      /b_,dM\\__,_\n" +
+                        "   _YMMMMMMMMMMMM(            STUDENT\n" +
+                        "  `MMMMMM/   /   \\        "+name+"\n" +
+                        "   MMM|  __  / __/         \n" +
+                        "   YMM/_/# \\__/# \\      Lives at: "+address+"\n" +
+                        "   (.   \\__/  \\__/         Email: "+email+" \n" +
+                        "     )       _,  |   Enrolled in: "+ courseText +"\n" +
+                        "_____/\\     _   /                   \n" +
+                        "    \\  `._____,           STUDENT ID: "+studentId+" \n"+
+                        "     `..___(__\n";
     }
 }

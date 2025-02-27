@@ -93,6 +93,19 @@ public class ServerMenu {
             } else {
                 throw new IllegalArgumentException("Invalid parameters for LOOKUP");
             }
+            //showStudentsByCourse and showTeachersByCourse
+        }else if(values[0].equals("SHOW") && values.length == 3){
+            if(values[1].equals("ENLISTED") && isValidCourseId(values[2])){
+                command.showStudentsByCourse(values[2]);
+            }else if(values[1].equals("ASSIGNED") && isValidCourseId(values[2])){
+                command.showTeachersByCourse(values[2]);
+            }else if(values[1].equals("MONEY") && values[2].equals("SPENT")){
+                command.showMoneySpent();
+            }else if(values[1].equals("MONEY") && values[2].equals("EARNED")){
+                command.showMoneyEarned();
+            }else{
+                throw new IllegalArgumentException("Invalid parameters for SHOW");
+            }
         }else{
             throw new IllegalArgumentException("Invalid Command.");
         }

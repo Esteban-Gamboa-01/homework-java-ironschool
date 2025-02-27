@@ -1,7 +1,5 @@
 package com.ironhack;
 
-import java.util.UUID;
-
 public class Course {
     private String courseId;
     private String name;
@@ -65,12 +63,20 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "courseId='" + courseId + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", moneyEarned=" + moneyEarned +
-                ", teacher=" + teacher +
-                '}';
+        String teacherText;
+        try{
+            teacherText = this.teacher.getName();
+        } catch (Exception e) {
+            teacherText = "assignment pending";
+        }
+
+        return "(\\ \n" +
+                        "\\'\\         "+name+"\n" +
+                        " \\'\\     __________      By: "+ teacherText +"   \n" +
+                        " / '|   ()_________)     Price: "+price+" $\n" +
+                        " \\ '/    \\ ~~~~~~~~ \\    MoneyEarned: "+moneyEarned+" $ \n" +
+                        "   \\       \\ ~~~~~~   \\         \n" +
+                        "   ==).      \\__________\\      ID: '"+courseId+"'\n" +
+                        "  (__)       ()__________)\n";
     }
 }
