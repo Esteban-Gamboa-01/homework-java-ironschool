@@ -31,6 +31,7 @@ public class ServerMenu {
 
         System.out.println("\nPlease introduce a command:");
         String cmd = scanner.nextLine();
+        cmd = cmd.toUpperCase();
         if(cmd.equals("EXIT")){
             option = false;
             scanner.close();
