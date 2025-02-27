@@ -10,20 +10,21 @@ public class ServerMenu {
     }
 
     public void showMenu() {
-        System.out.println("\nFantastic! All data introduced is correct. Then, we provide a command list" +
-                "for managing or adding a new information.");
-        System.out.println("\nCOMMAND LIST: ");
+        System.out.println(Style.SUCCESS+Style.BOLD + "\nFantastic! All data introduced is correct. Then, we provide a command list " +
+                "for managing or adding a new information." + Style.RESET);
+        System.out.println(Style.BOLD + "\n--------------------------------- COMMAND LIST ---------------------------------\n" + Style.RESET);
         System.out.println(
-                "- ENROLL [STUDENT_ID] [COURSE_ID]                  Example: ENROLL S3 C6" +
-                    "\n- ASSIGN [TEACHER_ID] [COURSE_ID]                  Example: ASSIGN T2 C3" +
-                    "\n- SHOW COURSES" +
-                    "\n- LOOKUP COURSE [COURSE_ID]                        Example: LOOKUP COURSE C8" +
-                    "\n- SHOW STUDENTS" +
-                    "\n- LOOKUP STUDENT [STUDENT_ID]                      Example: LOOKUP STUDENT S5" +
-                    "\n- SHOW TEACHERS" +
-                    "\n- LOOKUP TEACHER [TEACHER_ID]                      Example: LOOKUP STUDENT T10" +
-                    "\n- SHOW PROFIT" +
-                    "\n- EXIT");
+                "- "+Style.SUCCESS_BG+Style.BOLD+" ENROLL [STUDENT_ID] [COURSE_ID] "+Style.RESET+"                  "+Style.HIGHLIGHT+"Example: ENROLL S3 C6" + Style.RESET +
+                    "\n- "+Style.SUCCESS_BG+Style.BOLD+" ASSIGN [TEACHER_ID] [COURSE_ID] "+Style.RESET+"                  "+Style.HIGHLIGHT+"Example: ASSIGN T2 C3" + Style.RESET +
+                    "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW COURSES " +Style.RESET+
+                    "\n- "+Style.SUCCESS_BG+Style.BOLD+" LOOKUP COURSE [COURSE_ID] "+ Style.RESET+"                        "+Style.HIGHLIGHT+"Example: LOOKUP COURSE C8" + Style.RESET +
+                    "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW STUDENTS " +Style.RESET+
+                    "\n- "+Style.SUCCESS_BG+Style.BOLD+" LOOKUP STUDENT [STUDENT_ID] "+ Style.RESET+"                      "+Style.HIGHLIGHT+"Example: LOOKUP STUDENT S5" + Style.RESET +
+                    "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW TEACHERS " +Style.RESET+
+                    "\n- "+Style.SUCCESS_BG+Style.BOLD+" LOOKUP TEACHER [TEACHER_ID] "+ Style.RESET+"                      "+Style.HIGHLIGHT+"Example: LOOKUP TEACHER T10" + Style.RESET +
+                    "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW PROFIT " +Style.RESET+
+                    "\n- " + Style.HIGHLIGHT + " EXIT" + Style.RESET);
+        System.out.println(Style.BOLD + "\n--------------------------------------------------------------------------------" + Style.RESET);
     }
 
     public boolean selectCommand(){
@@ -50,8 +51,8 @@ public class ServerMenu {
     public void sanitize(String args){
         //boolean sanitize = false;
         String[] values = args.split( " ");
-        if (values.length > 3 && !values[0].equals("EXIT")) throw new IllegalArgumentException("Too many arguments.");
-        if (values.length < 2 && !values[0].equals("EXIT")) throw new IllegalArgumentException("Too few arguments.");
+        if (values.length > 3 && !values[0].equals("EXIT")) throw new IllegalArgumentException(Style.ERROR + "Too many arguments." + Style.RESET);
+        if (values.length < 2 && !values[0].equals("EXIT")) throw new IllegalArgumentException(Style.ERROR + "Too few arguments." + Style.RESET);
 
         CommandFunction command = new CommandFunction();
 
@@ -60,14 +61,14 @@ public class ServerMenu {
             if(isValidStudentId(values[1]) && isValidCourseId(values[2])){
                 command.enroll(values[1],values[2]);
             }else{
-                throw new IllegalArgumentException("Parameters for ENROLL are incorrect.");
+                throw new IllegalArgumentException(Style.ERROR + "Parameters for ENROLL are incorrect." + Style.RESET);
             }
             // COMMANDO ASSIGN
         }else if (values.length == 3 && values[0].equals("ASSIGN")){
             if(isValidTeacherId(values[1]) && isValidCourseId(values[2])){
                 command.assign(values[1],values[2]);
             }else{
-                throw new IllegalArgumentException("Parameters for ASSIGN are incorrect.");
+                throw new IllegalArgumentException(Style.ERROR + "Parameters for ASSIGN are incorrect." + Style.RESET);
             }
             // COMMANDO SHOW
         }else if(values[0].equals("SHOW") && values.length == 2){
@@ -80,7 +81,7 @@ public class ServerMenu {
             }else if(values[1].equals("PROFIT")){
                 command.showProfit();
             }else{
-                throw new IllegalArgumentException("Invalid parameters for SHOW.");
+                throw new IllegalArgumentException(Style.ERROR + "Invalid parameters for SHOW." + Style.RESET);
             }
             // COMMANDO LOOKUP
         }else if(values[0].equals("LOOKUP") && values.length == 3) {
@@ -91,10 +92,10 @@ public class ServerMenu {
             } else if (values[1].equals("TEACHER") && isValidTeacherId(values[2])) {
                 command.lookupTeacher(values[2]);
             } else {
-                throw new IllegalArgumentException("Invalid parameters for LOOKUP");
+                throw new IllegalArgumentException(Style.ERROR + "Invalid parameters for LOOKUP." + Style.RESET);
             }
         }else{
-            throw new IllegalArgumentException("Invalid Command.");
+            throw new IllegalArgumentException(Style.ERROR + "Invalid Command." + Style.RESET);
         }
         //return sanitize;
     }

@@ -24,15 +24,19 @@ public class CommandFunction {
             totalSalaries += teacher.getSalary();
         }
 
-//        System.out.println("Total Profit: " + (totalMoneyCourses - totalSalaries));
-        System.out.println("The profit is: "+ (totalMoneyCourses - totalSalaries));
+        double totalProfit = totalMoneyCourses - totalSalaries;
+        if (totalProfit < 0) {
+            System.out.println("The profit is: " + Style.ERROR + totalProfit + Style.RESET + "€");
+        } else {
+            System.out.println("The profit is: " + Style.SALARY + totalProfit + Style.RESET + "€");
+        }
     }
 
     public void showCourses() {
         String result = "";
         // If no courses in list
         if (Main.courseList.isEmpty()) {
-            result = "There are no courses available.";
+            result = Style.NOT_FOUND + "There are no courses available." + Style.RESET;
         } else {
             for (Course course : Main.courseList) {
                 // Append course to the result string
@@ -46,7 +50,7 @@ public class CommandFunction {
         System.out.println();
 
         if (Main.studentList.isEmpty()) {
-            System.out.println( "There are no students at the school.");
+            System.out.println(Style.NOT_FOUND + "There are no students at the school." + Style.RESET);
         } else {
             for (Student student : Main.studentList) {
                 System.out.println(student.toString());
@@ -58,7 +62,7 @@ public class CommandFunction {
         System.out.println();
 
         if (Main.teacherList.isEmpty()) {
-            System.out.println( "There are no teachers at the school.");
+            System.out.println(Style.NOT_FOUND + "There are no teachers at the school." + Style.RESET);
         } else {
             for (Teacher teacher : Main.teacherList) {
                 System.out.println(teacher.toString());
@@ -71,7 +75,7 @@ public class CommandFunction {
         String result = "";
         // If no students in list
         if (Main.courseList.isEmpty()) {
-            result = "There are no courses.";
+            result = Style.NOT_FOUND + "There are no courses." + Style.RESET;
         } else {
             for (Course course : Main.courseList) {
                 if (course.getCourseId().equals(courseId)) {
@@ -83,7 +87,7 @@ public class CommandFunction {
             }
             // If not found
             if (!found) {
-                result = "Not Found course with ID ( " + courseId + " ).";
+                result = Style.NOT_FOUND + "Not Found course with ID ( " + courseId + " )." + Style.RESET;
             }
         }
         System.out.println(result);
@@ -94,7 +98,7 @@ public class CommandFunction {
         String result = "";
         // If no students in list
         if (Main.studentList.isEmpty()) {
-            result = "There are no students.";
+            result = Style.NOT_FOUND + "There are no students." + Style.RESET;
         } else {
             for (Student student : Main.studentList) {
                 if (student.getStudentId().equals(studentId)) {
@@ -106,7 +110,7 @@ public class CommandFunction {
             }
             // If not found
             if (!found) {
-                result = "Not Found student with ID ( " + studentId + " ).";
+                result = Style.NOT_FOUND + "Not Found student with ID ( " + studentId + " )." + Style.RESET;
             }
         }
         System.out.println(result);
@@ -116,7 +120,7 @@ public class CommandFunction {
         boolean isFound = false;
         String result = "";
         if (Main.teacherList.isEmpty()) {
-            System.out.println("There are no teachers.");
+            System.out.println(Style.NOT_FOUND + "There are no teachers." + Style.RESET);
         } else {
             for (Teacher teacher : Main.teacherList) {
                 if (teacher.getTeacherId().equals(teacherId)) {
@@ -128,7 +132,7 @@ public class CommandFunction {
             }
             // If not found
             if (!isFound) {
-                result="Not Found teacher with ID ( " + teacherId + " ).";
+                result=Style.NOT_FOUND + "Not Found teacher with ID ( " + teacherId + " )." + Style.RESET;
             }
         }
         System.out.println(result);
@@ -141,7 +145,7 @@ public class CommandFunction {
         int k=0;
 
         if (Main.studentList.isEmpty() || Main.courseList.isEmpty()) {
-            System.out.println("Something went wrong.");
+            System.out.println(Style.ERROR + "Something went wrong." + Style.RESET);
         } else {
             for (int i = 0; i<Main.studentList.size() ;i++) {
                 if (Main.studentList.get(i).getStudentId().equals(studentId)) {
@@ -160,9 +164,9 @@ public class CommandFunction {
             }
 
             if (!isFoundStudent) {
-                System.out.println("Not Found student with ID ( " + studentId + " ).");
+                System.out.println(Style.NOT_FOUND + "Not Found student with ID ( " + studentId + " )." + Style.RESET);
             } else if (!isFoundCourse) {
-                System.out.println("Not Found course with ID ( " + courseId + " ).");
+                System.out.println(Style.NOT_FOUND + "Not Found course with ID ( " + courseId + " )." + Style.RESET);
             }else{
                 Course c = Main.courseList.get(k);
                 c.setMoneyEarned(c.getMoneyEarned()+c.getPrice());
@@ -182,7 +186,7 @@ public class CommandFunction {
         int k=0;
 
         if (Main.teacherList.isEmpty() || Main.courseList.isEmpty()) {
-            System.out.println("There are no students.");
+            System.out.println(Style.NOT_FOUND + "There are no students." + Style.RESET);
         } else {
             for (int i = 0; i<Main.teacherList.size() ;i++) {
                 if (Main.teacherList.get(i).getTeacherId().equals(teacherId)) {
@@ -201,9 +205,9 @@ public class CommandFunction {
             }
 
             if (!isFoundTeacher) {
-                System.out.println("Not Found teacher with ID ( " + teacherId + " ).");
+                System.out.println(Style.NOT_FOUND + "Not Found teacher with ID ( " + teacherId + " )." + Style.RESET);
             } else if (!isFoundCourse) {
-                System.out.println("Not Found course with ID ( " + courseId + " ).");
+                System.out.println(Style.NOT_FOUND + "Not Found course with ID ( " + courseId + " )." + Style.RESET);
             }else{
                 Main.courseList.get(k).setTeacher(Main.teacherList.get(j));
                 System.out.println(Main.courseList.get(k).toString());
