@@ -269,6 +269,59 @@ public class CommandFunction {
     }
 
     // EXTRA COMMANDS
+    public void showStudentsByCourse(String courseId) {
+        boolean found = false;
+        for (Course course : Main.courseList) {
+            if (course.getCourseId().equals(courseId)) {
+                found = true;
+                System.out.println("Students enrolled in the course " + courseId + ":");
+                for (Student student : Main.studentList) {
+                    if (student.getCourse() != null && student.getCourse().getCourseId().equals(courseId)) {
+                        System.out.println(student);
+                    }
+                }
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Course with ID " + courseId + " not found.");
+        }
+    }
+
+    public void showMoneyEarned() {
+        double totalMoneyEarned = 0;
+        for (Course course : Main.courseList) {
+            totalMoneyEarned += course.getMoneyEarned();
+        }
+        System.out.println("Total money earned from all courses: " + totalMoneyEarned);
+    }
+
+    public void showMoneySpent() {
+        double totalMoneySpent = 0;
+        for (Teacher teacher : Main.teacherList) {
+            totalMoneySpent += teacher.getSalary();
+        }
+        System.out.println("Total money spent on teachers' salaries: " + totalMoneySpent);
+    }
+
+    public void showTeachersByCourse(String courseId) {
+        boolean found = false;
+        for (Course course : Main.courseList) {
+            if (course.getCourseId().equals(courseId)) {
+                found = true;
+                System.out.println("Teachers assigned to course " + courseId + ":");
+                if (course.getTeacher() != null) {
+                    System.out.println(course.getTeacher());
+                } else {
+                    System.out.println("No teacher assigned to this course.");
+                }
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Course with ID " + courseId + " not found.");
+        }
+    }
 
 
 }
