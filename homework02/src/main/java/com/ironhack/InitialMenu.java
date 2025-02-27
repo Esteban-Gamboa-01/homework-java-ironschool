@@ -11,7 +11,7 @@ public class InitialMenu {
 
     public void startMenu(){
         showArt();
-        System.out.println("What is the school name?");
+//        System.out.println("What is the school name?");
         System.out.println(Style.BOLD + "What is the " + Style.UNDERLINE+Style.SCHOOL + "school" + Style.RESET+Style.BOLD + " name?" + Style.RESET);
         nameSchool = scanner.nextLine();
         System.out.println(Style.SUCCESS_BG+Style.BOLD + " Ok! Welcome to the " + Style.SCHOOL + nameSchool + Style.RESET+Style.SUCCESS_BG+Style.BOLD + "! " + Style.RESET);
