@@ -114,11 +114,21 @@ public class InitialMenu {
 
             auxiliarStudent = new Student(nameStudent, addressStudent,emailStudent);
             //This line is for proving that email format is correct
-            try{
-                auxiliarStudent.setEmail(emailStudent);
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
+            boolean opt = false;
+            do{
+                try{
+                    auxiliarStudent.setEmail(emailStudent);
+                    auxiliarStudent = new Student(nameStudent, addressStudent,emailStudent);
+                    opt = false;
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                    System.out.println("Please introduce a new valid email: ");
+                    emailStudent = scanner.next();
+
+                    opt = true;
+                }
+            }while(opt);
+
 
             System.out.println(Style.SUCCESS_BG+Style.BOLD + " Ok! Student " + counter + ": " +
                     Style.STUDENT + nameStudent + Style.RESET+Style.SUCCESS_BG+Style.BOLD +
