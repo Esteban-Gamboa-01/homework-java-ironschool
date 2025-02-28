@@ -13,6 +13,10 @@ public class Teacher {
         this.salary = salary;
     }
 
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
     // Auto-generated teacherId method
     private String autoTeacherId() {
 //        return "T-" + UUID.randomUUID().toString().substring(0, 3); // T-XXX

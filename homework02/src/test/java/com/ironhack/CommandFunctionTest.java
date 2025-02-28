@@ -51,7 +51,30 @@ class CommandFunctionTest {
         Main.studentList = new ArrayList<>();
 
     }
+    // ENROLL & ASSIGM Command Test
+    @Test
+    public void assignCommand_validInput_teacherAssigned(){
+        Teacher teacher1 = new Teacher("Alice", 400);
+        teacher1.setTeacherId("T10");
+        Main.teacherList.add(teacher1);
+        Course javaCourse = new Course("Java", 500);
+        javaCourse.setCourseId("C55");
+        Main.courseList.add(javaCourse);
+        commandFunction.assign("T10","C55");
+        assertEquals("Alice",Main.courseList.get(0).getTeacher().getName());
+    };
 
+    @Test
+    public void enrollCommand_validInput_studentEnrolled(){
+        Course javaCourse = new Course("Java", 500);
+        javaCourse.setCourseId("C30");
+        Main.courseList.add(javaCourse);
+        Student student = new Student("John", "City", "test@mail.com");
+        student.setStudentId("S75");
+        Main.studentList.add(student);
+        commandFunction.enroll("S75","C30");
+        assertEquals("Java",Main.studentList.get(2).getCourse().getName());
+    }
     // SHOW COURSES Command Test
     @Test
     public void testShowCourses_WithCourses() {

@@ -186,7 +186,7 @@ public class CommandFunction {
         int k=0;
 
         if (Main.teacherList.isEmpty() || Main.courseList.isEmpty()) {
-            System.out.println(Style.NOT_FOUND + "There are no students." + Style.RESET);
+            System.out.println(Style.NOT_FOUND + "There are no courses or teachers." + Style.RESET);
         } else {
             for (int i = 0; i<Main.teacherList.size() ;i++) {
                 if (Main.teacherList.get(i).getTeacherId().equals(teacherId)) {

@@ -84,7 +84,7 @@ public class Student {
         try{
             courseText = this.course.getName();
         } catch (Exception e) {
-            courseText = "assignment pending";
+            courseText = "enrollment pending";
         }
         return "      /b_,dM\\__,_\n" +
                         "   _YMMMMMMMMMMMM(            STUDENT\n" +

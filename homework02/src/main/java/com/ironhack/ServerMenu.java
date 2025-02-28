@@ -23,6 +23,10 @@ public class ServerMenu {
                     "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW TEACHERS " +Style.RESET+
                     "\n- "+Style.SUCCESS_BG+Style.BOLD+" LOOKUP TEACHER [TEACHER_ID] "+ Style.RESET+"                      "+Style.HIGHLIGHT+"Example: LOOKUP TEACHER T10" + Style.RESET +
                     "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW PROFIT " +Style.RESET+
+                        "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW MONEY EARNED" +Style.RESET+
+                        "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW MONEY SPENT" +Style.RESET+
+                        "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW ENLISTED [COURSE_ID]" +Style.RESET+
+                        "\n- "+Style.SUCCESS_BG+Style.BOLD+" SHOW ASSIGNED [COURSE_ID]" +Style.RESET+
                     "\n- " + Style.HIGHLIGHT + " EXIT" + Style.RESET);
         System.out.println(Style.BOLD + "\n--------------------------------------------------------------------------------" + Style.RESET);
     }
